@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 
 import java.sql.Timestamp;
 
+
 public class UserBean {
 
     private Integer userId;
