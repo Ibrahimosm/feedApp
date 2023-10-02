@@ -12,32 +12,32 @@ spring:
   profiles:
     active: default
 
-# Banner Text
-banner:
-  charset: UTF-8
-  location: src/main/resources/banner/academy.txt
+  # Banner Text
+  banner:
+    charset: UTF-8
+    location: classpath:/banner/academy.txt
 
-# Jackson Settings
-jackson:
-  time-zone: America/Toronto
-  date-format: "yyyy-MM-dd HH:mm:ss"
+  # Jackson Settings
+  jackson:
+    time-zone: America/Toronto
+    date-format: "yyyy-MM-dd HH:mm:ss"
 
-# Common Database Settings
-sql:
-  init:
-    continue-on-error: false
-jpa:
-  show-sql: true
-  open-in-view: false
-  properties:
-    jakarta:
-      persistence:
-        sharedCache:
-          mode: ENABLE_SELECTIVE
+  # Common Database Settings
+  sql:
+    init:
+      continue-on-error: false
+  jpa:
+    show-sql: true
+    open-in-view: false
+    properties:
+      jakarta:
+        persistence:
+          sharedCache:
+            mode: ENABLE_SELECTIVE
+      hibernate:
+        '[format_sql]': true
     hibernate:
-      format_sql: true
-    naming:
-      physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
 ---
 
