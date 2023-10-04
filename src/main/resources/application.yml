@@ -60,8 +60,8 @@ spring:
 
   # Email Settings
   mail:
-    username: yourNewEmail@gmail.com
-    password: Enteryour2FAPassword
+    username: abdulrahimosman1998@gmail.com
+    password: gklfknyarikrafve
     host: smtp.gmail.com
     port: 587
     protocol: smtp

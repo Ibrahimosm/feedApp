@@ -1,4 +1,4 @@
 package com.bptn.feedApp.provider;
 
-public class factory {
+public class factory extends YamlPropertySourceFactory {
 }
