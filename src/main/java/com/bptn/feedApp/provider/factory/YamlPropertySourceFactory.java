@@ -1,4 +1,4 @@
-package com.bptn.feedApp.provider;
+package com.bptn.feedApp.provider.factory;
 
 
 import java.io.IOException;
