@@ -1,4 +1,5 @@
 package com.bptn.feedApp.provider;
+import com.bptn.feedApp.provider.factory.YamlPropertySourceFactory;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Value;
