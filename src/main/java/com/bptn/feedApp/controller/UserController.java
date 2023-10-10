@@ -67,4 +67,11 @@ public class UserController {
 
     }
 
+    @GetMapping("/verify/email")
+    public void verifyEmail() {
+
+        logger.debug("Verifying Email");
+        this.userService.verifyEmail();
+    }
+
 }
