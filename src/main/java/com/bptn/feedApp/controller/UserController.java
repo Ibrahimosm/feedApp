@@ -1,6 +1,7 @@
 package com.bptn.feedApp.controller;
 import com.bptn.feedApp.jpa.User;
 import com.bptn.feedApp.service.UserService;
+import com.fasterxml.jackson.databind.JsonNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,6 +102,12 @@ public class UserController {
         logger.debug("Sending Reset Password Email, emailId: {}", emailId);
 
         this.userService.sendResetPasswordEmail(emailId);
+    }
+
+    @PostMapping("/reset")
+    public void passwordReset(@RequestBody JsonNode json){
+        logger.debug("Resetting Password, password: {}", json.get("password").asText());
+        this.userService.restPassword(json.get("password").asText());
     }
 
 }
