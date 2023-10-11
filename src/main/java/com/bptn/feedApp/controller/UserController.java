@@ -1,4 +1,5 @@
 package com.bptn.feedApp.controller;
+import com.bptn.feedApp.jpa.Profile;
 import com.bptn.feedApp.jpa.User;
 import com.bptn.feedApp.service.UserService;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -120,6 +121,14 @@ public class UserController {
     public User updateUser(@RequestBody User user){
         logger.debug("Updating User Data");
         return this.userService.updateUser(user);
+    }
+
+    @PostMapping("/update/profile")
+    public User updateUserProfile(@RequestBody Profile profile) {
+
+        logger.debug("Updating User Profile Data, Profile: {}", profile.toString());
+
+        return this.userService.updateUserProfile(profile);
     }
 
 }
