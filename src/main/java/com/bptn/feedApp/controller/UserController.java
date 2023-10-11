@@ -110,4 +110,10 @@ public class UserController {
         this.userService.restPassword(json.get("password").asText());
     }
 
+    @GetMapping("/get")
+    public User getUser(){
+        logger.debug("Getting User Data");
+        return this.userService.getUser();
+    }
+
 }
