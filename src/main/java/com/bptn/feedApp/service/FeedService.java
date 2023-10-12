@@ -1,7 +1,11 @@
 package com.bptn.feedApp.service;
 
+import com.bptn.feedApp.domain.PageResponse;
 import com.bptn.feedApp.exception.domain.FeedNotFoundException;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +46,15 @@ public class FeedService {
 
         return this.feedRepository.findById(feedId)
                 .orElseThrow(() -> new FeedNotFoundException(String.format("Feed doesn't exist, %d", feedId)));
+    }
+
+    public PageResponse<Feed> getUserFeeds(int pageNum, int pageSize){
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = this.userRepository.findByUsername(username)
+                .orElseThrow(() -> new UserNotFoundException(String.format("Username doesn't exist, %s", username)));
+
+        Page<Feed> paged = this.feedRepository.findByUser(user, PageRequest.of(pageNum,pageSize, Sort.by("feedId").descending()));
+    return new PageResponse<>(paged);
     }
 
 }
