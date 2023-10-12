@@ -14,7 +14,7 @@ import com.bptn.feedApp.jpa.Feed;
 import com.bptn.feedApp.jpa.User;
 
 @Service
-public class feedService {
+public class FeedService {
 
     final Logger logger = LoggerFactory.getLogger(this.getClass());
 
