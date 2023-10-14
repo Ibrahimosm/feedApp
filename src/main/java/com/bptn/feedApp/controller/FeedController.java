@@ -56,4 +56,12 @@ public class FeedController {
         return this.feedService.createFeedMetaData(feedId, meta);
     }
 
+    @DeleteMapping("/{feedId}")
+    public void deleteFeed(@PathVariable int feedId) {
+
+        logger.debug("Deleting Feed, feedId: {}", feedId);
+
+        this.feedService.deleteFeed(feedId);
+    }
+
 }
