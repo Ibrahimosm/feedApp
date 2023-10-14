@@ -2,6 +2,7 @@ package com.bptn.feedApp.service;
 
 import com.bptn.feedApp.domain.PageResponse;
 import com.bptn.feedApp.exception.domain.FeedNotFoundException;
+import com.bptn.feedApp.exception.domain.FeedNotUserException;
 import com.bptn.feedApp.exception.domain.LikeExistException;
 import com.bptn.feedApp.jpa.FeedMetaData;
 import com.bptn.feedApp.repository.FeedMetaDataRepository;
@@ -113,6 +114,20 @@ public class FeedService {
         }
 
         return this.feedMetaDataRepository.save(newMeta);
+    }
+
+    public void deleteFeed(int feedId){
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        Feed feed = this.feedRepository.findById(feedId).orElseThrow(() ->
+                new FeedNotFoundException(String.format("Feed doesn't exist, %d", feedId)));
+
+        Optional.of(feed).filter(f ->
+                f.getUser().getUsername().equals(username))
+                .orElseThrow(() -> new
+                        FeedNotUserException(String.format("Feed doesnt belong to current User, feedId: %d, username: $s", feedId, username)));
+
+        this.feedRepository.delete(feed);
     }
 
 }
